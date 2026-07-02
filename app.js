@@ -6,6 +6,9 @@ const express = require("express")
 const app = express()
 const port = process.env.PORT || 5001
 
+// other packages
+const morgan = require("morgan")
+
 // database
 const connectDB = require("./db/connect")
 
@@ -13,6 +16,7 @@ const connectDB = require("./db/connect")
 const notFoundMiddleware = require("./middleware/not-found")
 const errorHandlerMiddleware = require("./middleware/error-handler")
 
+app.use(morgan("tiny")) // in order to see the request and route info
 app.use(express.json()) // in order to access data in req.body
 
 // routes
