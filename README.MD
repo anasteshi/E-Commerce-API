@@ -17,7 +17,7 @@
 - [x] setup / GET Route
 - [x] setup express.json() middleware
 - [x] setup 404 and errorHandler middleware
-- [x] import 'exress-async-errors' package
+- [x] import 'express-async-errors' package
 
 #### 404 vs ErrorHandler Middleware
 - [x] understand the importance of the middleware order
