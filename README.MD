@@ -34,7 +34,7 @@
 
 #### Validator Package
 
-- [Validator](https://www.npmjs.com/package/validator)
+- [x] [Validator](https://www.npmjs.com/package/validator)
 
 #### Auth Routes Structure
 

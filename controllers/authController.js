@@ -27,8 +27,12 @@ const register = async (req, res) => {
         role: user.role,
     }
     const token = createJWT({ payload: tokenUser })
-    
-    res.status(StatusCodes.CREATED).json({ user, token })
+    const day = 1000 * 60 * 60 * 24
+    res.cookie("token", token, {
+        httpOnly: true,
+        expires: new Date(Date.now() + day),
+    })
+    res.status(StatusCodes.CREATED).json({ user })
 }
 
 const login = async (req, res) => {
