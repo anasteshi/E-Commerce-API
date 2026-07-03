@@ -8,6 +8,7 @@ const port = process.env.PORT || 5001
 
 // other packages
 const morgan = require("morgan")
+const cookieParser = require("cookie-parser")
 
 // database
 const connectDB = require("./db/connect")
@@ -21,9 +22,11 @@ const errorHandlerMiddleware = require("./middleware/error-handler")
 
 app.use(morgan("tiny")) // in order to see the request and route info
 app.use(express.json()) // in order to access data in req.body
+app.use(cookieParser()) // in order to access cookies in code
 
 // routes
-app.get("/", async (req, res) => {
+app.get("/api/v1", async (req, res) => {
+    console.log(req.cookies)
     res.send("E-commerce API")
 })
 
