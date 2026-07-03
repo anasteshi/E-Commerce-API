@@ -9,6 +9,12 @@ const register = async (req, res) => {
         throw new CustomError.BadRequestError("Invalid credentials")
     }
 
+    const emailAlreadyInUse = await User.findOne({ email })
+
+    if (emailAlreadyInUse) {
+        throw new CustomError.BadRequestError("Duplicate email value")
+    }
+
     const user = await User.create({ name, email, password })
     res.status(StatusCodes.CREATED).json(user)
 }

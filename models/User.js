@@ -10,6 +10,7 @@ const UserSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        unique: true, // not a validator but checks for indexes
         required: [true, "Please provide email"],
         validate: {
             message: "Please provide a valid email",
