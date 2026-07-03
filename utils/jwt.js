@@ -19,6 +19,8 @@ const attachCookiesToResponse = ({ res, user }) => {
     res.cookie("token", token, {
         httpOnly: true,
         expires: new Date(Date.now() + day),
+        secure: process.env.NODE_ENV === "production", // cookie will be delivered only with https protocol
+        signed: true, // to prevent changing cookies from client side – in devtools, for example
     })
     // res.status(StatusCodes.CREATED).json({ user })
 }
