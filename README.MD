@@ -77,10 +77,10 @@
 - [x] restart the server !!!!
 - [x] refactor code, create jwt functions in utils
 - [x] refactor cookie code
-- [] setup func attachCookiesToResponse
-- [] accept payload(res, tokenUser)
-- [] create token, setup cookie
-- [] optionally send back the response
+- [x] setup func attachCookiesToResponse
+- [x] accept payload(res, tokenUser)
+- [x] create token, setup cookie
+- [x] optionally send back the response
 
 #### Login Route
 

@@ -1,7 +1,7 @@
 const CustomError = require("../errors")
 const { StatusCodes } = require("http-status-codes")
 const User = require("../models/User")
-const { createJWT } = require("../utils")
+const { attachCookiesToResponse } = require("../utils")
 
 const register = async (req, res) => {
     const { name, email, password } = req.body
@@ -26,15 +26,9 @@ const register = async (req, res) => {
         name: user.name,
         role: user.role,
     }
-    const token = createJWT({ payload: tokenUser })
 
-    const day = 1000 * 60 * 60 * 24
-    res.cookie("token", token, {
-        httpOnly: true,
-        expires: new Date(Date.now() + day),
-        secure: false, // temp, to see token in clg
-    })
-    res.status(StatusCodes.CREATED).json({ user, token })
+    attachCookiesToResponse({ res, user: tokenUser })
+    res.status(StatusCodes.CREATED).json({ user })
 }
 
 const login = async (req, res) => {
