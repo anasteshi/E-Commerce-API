@@ -20,6 +20,7 @@
 - [x] import 'express-async-errors' package
 
 #### 404 vs ErrorHandler Middleware
+
 - [x] understand the importance of the middleware order
 
 #### Morgan Package
@@ -51,6 +52,7 @@
 - [x] setup app.use('/api/v1/auth', authRouter)
 
 #### Test Routes in Postman
+
 - [x] set up and test auth routes in Postman
 
 #### Register Controller
@@ -88,12 +90,12 @@
 - [x] find user, if no user return 401
 - [x] check password, if does not match return 401
 - [x] if everything is correct, attach cookie
-  and send back the same response as in register
+      and send back the same response as in register
 
 #### Logout Route
 
-- [] set token cookie equal to some string value
-- [] set expires:new Date(Date.now())
+- [x] set token cookie equal to some string value
+- [x] set expires:new Date(Date.now())
 
 #### User Routes Structure
 
