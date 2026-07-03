@@ -7,7 +7,9 @@ const register = async (req, res) => {
     const { name, email, password } = req.body
 
     if (!name || !email || !password) {
-        throw new CustomError.BadRequestError("Invalid credentials")
+        throw new CustomError.BadRequestError(
+            "Provide name, email, and password",
+        )
     }
 
     const emailAlreadyInUse = await User.findOne({ email })
@@ -32,7 +34,26 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
-    res.send("Login route")
+    const { email, password } = req.body
+    if (!email || !password) {
+        throw new CustomError.BadRequestError(
+            "Please provide email and password",
+        )
+    }
+
+    const user = await User.findOne({ email })
+    if (!user) {
+        throw new CustomError.UnauthenticatedError("Invalid credentials")
+    }
+
+    const isMatch = await user.comparePassword(password)
+    if (!isMatch) {
+        throw new CustomError.UnauthenticatedError("Invalid credentials")
+    }
+
+    const tokenUser = { name: user.name, userID: user._id, role: user.role }
+    attachCookiesToResponse({ res, user: tokenUser })
+    res.status(StatusCodes.OK).json({ user })
 }
 
 const logout = async (req, res) => {
