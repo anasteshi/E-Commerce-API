@@ -42,16 +42,16 @@ UserSchema.methods.comparePassword = async function (candidatePassword) {
     return isMatch
 }
 
-UserSchema.methods.createJWT = function () {
-    return jwt.sign(
-        {
-            userID: this._id,
-            name: this.name,
-            role: this.role,
-        },
-        process.env.JWT_SECRET,
-        { expiresIn: process.env.JWT_LIFETIME },
-    )
-}
+// UserSchema.methods.createJWT = function () {
+//     return jwt.sign(
+//         {
+//             userID: this._id,
+//             name: this.name,
+//             role: this.role,
+//         },
+//         process.env.JWT_SECRET,
+//         { expiresIn: process.env.JWT_LIFETIME },
+//     )
+// }
 
 module.exports = mongoose.model("User", UserSchema)
