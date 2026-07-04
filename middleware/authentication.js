@@ -4,12 +4,18 @@ const { verifyJWT } = require("../utils/index")
 const authenticateUser = async (req, res, next) => {
     const token = req.signedCookies.token
     if (!token) {
-        throw new CustomError.UnauthenticatedError("No token present")
-    } else {
-        console.log("Token present")
+        throw new CustomError.UnauthenticatedError(
+            "Authentication failed. No token present",
+        )
     }
 
-    next()
+    try {
+        const { name, userID, role } = verifyJWT({ token })
+        req.user = { name, userID, role }
+        next()
+    } catch (err) {
+        throw new CustomError.UnauthenticatedError("Authentication invalid")
+    }
 }
 
 module.exports = { authenticateUser }
