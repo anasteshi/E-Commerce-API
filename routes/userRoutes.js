@@ -1,6 +1,9 @@
 const express = require("express")
 const router = express.Router()
-const { authenticateUser } = require("../middleware/authentication")
+const {
+    authenticateUser,
+    authorizePermissions,
+} = require("../middleware/authentication")
 const {
     getSingleUser,
     getAllUsers,
@@ -9,12 +12,12 @@ const {
     updateUserPassword,
 } = require("../controllers/userController")
 
-router.route("/").get(authenticateUser, getAllUsers)
+router.route("/").get(authenticateUser, authorizePermissions, getAllUsers)
 router.route("/showMe").get(showCurrentUser)
 
 router.route("/updateUser").patch(updateUser)
 router.route("/updateUserPassword").patch(updateUserPassword)
 
-router.route("/:id").get(authenticateUser, getSingleUser)
+router.route("/:id").get(authenticateUser, authorizePermissions, getSingleUser)
 
 module.exports = router

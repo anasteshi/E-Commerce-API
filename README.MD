@@ -120,7 +120,7 @@
 
 #### Authorize Permissions Setup
 
-- [] hardcode
+- [x] hardcode
 
 #### Authorize Permissions Complete
 
