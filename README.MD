@@ -124,7 +124,7 @@
 
 #### Authorize Permissions Complete
 
-- [] introduce params
+- [x] introduce params
 
 #### ShowCurrentUser
 
