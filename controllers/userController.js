@@ -22,6 +22,25 @@ const showCurrentUser = async (req, res) => {
     res.status(StatusCodes.OK).json({ user: req.user })
 }
 
+// update user with findOneAndUpdate()
+// const updateUser = async (req, res) => {
+//     const { email, name } = req.body
+//     const { userID } = req.user
+
+//     if (!email || !name) {
+//         throw new CustomError.BadRequestError("Please provide name and email")
+//     }
+//     const user = await User.findOneAndUpdate(
+//         { _id: userID },
+//         { email, name },
+//         { new: true, runValidators: true },
+//     )
+//     const tokenUser = createTokenUser(user)
+//     attachCookiesToResponse({ res, user: tokenUser })
+//     res.status(StatusCodes.OK).json({ user: tokenUser })
+// }
+
+// update user with user.save()
 const updateUser = async (req, res) => {
     const { email, name } = req.body
     const { userID } = req.user
@@ -29,12 +48,11 @@ const updateUser = async (req, res) => {
     if (!email || !name) {
         throw new CustomError.BadRequestError("Please provide name and email")
     }
+    const user = await User.findOne({ _id: userID })
+    user.email = email
+    user.name = name
+    await user.save()
 
-    const user = await User.findOneAndUpdate(
-        { _id: userID },
-        { email, name },
-        { new: true, runValidators: true },
-    )
     const tokenUser = createTokenUser(user)
     attachCookiesToResponse({ res, user: tokenUser })
     res.status(StatusCodes.OK).json({ user: tokenUser })
