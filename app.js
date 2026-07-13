@@ -9,6 +9,7 @@ const port = process.env.PORT || 5001
 // other packages
 const morgan = require("morgan")
 const cookieParser = require("cookie-parser")
+const fileUpload = require("express-fileupload")
 
 // database
 const connectDB = require("./db/connect")
@@ -26,6 +27,8 @@ app.use(morgan("tiny")) // in order to see the request and route info
 app.use(express.json()) // in order to access data in req.body
 // app.use(cookieParser()) // in order to access cookies in code
 app.use(cookieParser(process.env.JWT_SECRET)) // to sign our cookies
+app.use(express.static("./public"))
+app.use(fileUpload())
 
 // routes
 app.get("/api/v1", async (req, res) => {
