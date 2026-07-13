@@ -8,7 +8,9 @@ const {
 } = require("../utils")
 
 const createProduct = async (req, res) => {
-    res.send("Create product")
+    req.body.user = req.user.userID
+    const product = await Product.create(req.body)
+    res.status(StatusCodes.CREATED).json({ product })
 }
 
 const getAllProducts = async (req, res) => {
