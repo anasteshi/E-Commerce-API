@@ -70,7 +70,19 @@ const ProductSchema = new mongoose.Schema(
             required: true,
         },
     },
-    { timestamps: true },
+    {
+        timestamps: true,
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true },
+    },
 )
+
+ProductSchema.virtual("reviews", {
+    ref: "Review",
+    localField: "_id",
+    foreignField: "product",
+    justOne: false, // for not only one review showing
+    // match: {rating: 5} // to get only the reviews with rating of 5
+})
 
 module.exports = mongoose.model("Product", ProductSchema)
