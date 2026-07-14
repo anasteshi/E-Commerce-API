@@ -30,11 +30,18 @@ const createReview = async (req, res) => {
 }
 
 const getSingleReview = async (req, res) => {
-    res.send("Get single review")
+    const { id: reviewID } = req.params
+    const review = await Review.findById(reviewID)
+    if (!review) {
+        throw new CustomError.NotFoundError(`No review with id: ${reviewID}`)
+    }
+    res.status(StatusCodes.OK).json({ review })
 }
 
 const getAllReviews = async (req, res) => {
-    res.send("Get all reviews")
+    const reviews = await Review.find({})
+    // might also add pagination later
+    res.status(StatusCodes.OK).json({ reviews, count: reviews.length })
 }
 
 const updateReview = async (req, res) => {
