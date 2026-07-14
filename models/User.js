@@ -6,14 +6,14 @@ const bcrypt = require("bcryptjs")
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, "Please provide name"],
+        required: [true, "Please provide user name"],
         minlength: 2,
         maxlength: 40,
     },
     email: {
         type: String,
         unique: true, // not a validator but checks for indexes
-        required: [true, "Please provide email"],
+        required: [true, "Please provide user email"],
         validate: {
             message: "Please provide a valid email",
             validator: validator.isEmail,
@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, "Please provide password"],
+        required: [true, "Please provide user password"],
         minlength: 6,
     },
     role: {
@@ -36,7 +36,7 @@ UserSchema.pre("save", async function () {
     // console.log(this.isModified("name"))
 
     if (!this.isModified("password")) return
-    
+
     const salt = await bcrypt.genSalt(10)
     this.password = await bcrypt.hash(this.password, salt)
 })

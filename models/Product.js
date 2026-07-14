@@ -6,7 +6,7 @@ const ProductSchema = new mongoose.Schema(
             type: String,
             required: [true, "Please provide product name"],
             trim: true,
-            maxlength: [100, "Name cannot be more than 100 characters"],
+            maxlength: [100, "Product name cannot be more than 100 characters"],
         },
         price: {
             type: Number,
@@ -18,7 +18,7 @@ const ProductSchema = new mongoose.Schema(
             required: [true, "Please provide product description"],
             maxlength: [
                 1000,
-                "Description cannot be more than 1000 characters",
+                "Product description cannot be more than 1000 characters",
             ],
         },
         image: {
@@ -35,7 +35,7 @@ const ProductSchema = new mongoose.Schema(
         },
         company: {
             type: String,
-            required: [true, "Please provide company"],
+            required: [true, "Please provide product company"],
             enum: {
                 values: ["ikea", "liddy", "marcos"],
                 message: "{VALUE} is not supported",
