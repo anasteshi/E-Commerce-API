@@ -47,6 +47,10 @@ ReviewSchema.statics.calculateAverageRating = async function (productID) {
                 averageRating: { $avg: "$rating" },
                 numOfReviews: { $sum: 1 },
             },
+            // $group: { // in case I want to group reviews by rating (2 ratings with 5, 1 rating with 1 etc)
+            //     _id: "$rating",
+            //     amount: { $sum: 1 },
+            // },
         },
     ])
     console.log(result)
@@ -55,7 +59,7 @@ ReviewSchema.statics.calculateAverageRating = async function (productID) {
             { _id: productID },
             {
                 averageRating: Math.round(result[0]?.averageRating || 0), // optional chaining operator in case
-                // if the aggregation steps return an empty array []
+                // the aggregation steps return an empty array []
                 numOfReviews: result[0]?.numOfReviews || 0,
             },
         )
