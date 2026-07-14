@@ -45,7 +45,24 @@ const getAllReviews = async (req, res) => {
 }
 
 const updateReview = async (req, res) => {
-    res.send("Update review")
+    const { id: reviewID } = req.params
+    const { title, rating, comment } = req.body
+
+    // if (!title || !rating || !comment) {
+    //     throw new CustomError.BadRequestError("Please provide all values")
+    // }
+
+    const review = await Review.findById(reviewID)
+    if (!review) {
+        throw new CustomError.NotFoundError(`No review with id: ${reviewID}`)
+    }
+    utils.checkPermissions(req.user, review.user)
+
+    review.title = title
+    review.rating = rating
+    review.comment = comment
+    await review.save()
+    res.status(StatusCodes.OK).json({ review })
 }
 
 const deleteReview = async (req, res) => {
