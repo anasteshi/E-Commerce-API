@@ -10,6 +10,11 @@ const port = process.env.PORT || 5001
 const morgan = require("morgan")
 const cookieParser = require("cookie-parser")
 const fileUpload = require("express-fileupload")
+const rateLimiter = require("express-rate-limit")
+const helmet = require("helmet")
+const xss = require("xss-clean")
+const cors = require("cors")
+const mongoSanitize = require("express-mongo-sanitize")
 
 // database
 const connectDB = require("./db/connect")
@@ -25,6 +30,19 @@ const orderRouter = require("./routes/orderRoutes")
 const notFoundMiddleware = require("./middleware/not-found")
 const errorHandlerMiddleware = require("./middleware/error-handler")
 const { authenticateUser } = require("./middleware/authentication")
+
+app.set("trust proxy", 1)
+
+app.use(
+    rateLimiter({
+        windowMS: 15 * 60 * 1000,
+        max: 60,
+    }),
+)
+app.use(helmet())
+app.use(cors())
+app.use(xss())
+app.use(mongoSanitize())
 
 app.use(morgan("tiny")) // in order to see the request and route info
 app.use(express.json()) // in order to access data in req.body
