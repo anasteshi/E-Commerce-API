@@ -51,7 +51,7 @@ const createOrder = async (req, res) => {
     const paymentIntent = fakeStripeAPI({ amount: total, currency: "usd" })
 
     const order = await Order.create({
-        ...orderItems,
+        orderItems,
         total,
         subtotal,
         shippingFee,
@@ -66,19 +66,40 @@ const createOrder = async (req, res) => {
 }
 
 const getSingleOrder = async (req, res) => {
-    res.send("Get single order")
+    const { id: orderID } = req.params
+    const order = await Order.findById(orderID)
+    if (!order) {
+        throw new CustomError.NotFoundError(`No order with id: ${orderID}`)
+    }
+    utils.checkPermissions(req.user, order.user)
+    res.status(StatusCodes.OK).json({ order })
 }
 
 const getAllOrders = async (req, res) => {
-    res.send("Get all orders")
+    const orders = await Order.find({})
+    res.status(StatusCodes.OK).json({ orders, count: orders.length })
 }
 
 const updateOrder = async (req, res) => {
-    res.send("Update order")
+    const { id: orderID } = req.params
+    const { paymentIntentID } = req.body
+    const order = await Order.findById(orderID)
+
+    if (!order) {
+        throw new CustomError.NotFoundError(`No order with id: ${orderID}`)
+    }
+
+    utils.checkPermissions(req.user, order.user)
+
+    order.paymentIntentID = paymentIntentID
+    order.status = "paid"
+    await order.save()
+    res.status(StatusCodes.OK).json({ order })
 }
 
 const getCurrentUserOrders = async (req, res) => {
-    res.send("Get current user order")
+    const orders = await Order.find({ user: req.user.userID })
+    res.status(StatusCodes.OK).json({ orders, count: orders.length })
 }
 
 module.exports = {
