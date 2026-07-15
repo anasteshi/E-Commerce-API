@@ -185,7 +185,7 @@
 
 - [x] add productController file in controllers
 - [x] export (createProduct, getAllProducts,
-  getSingleProduct, updateProduct, deleteProduct, uploadImage) functions
+      getSingleProduct, updateProduct, deleteProduct, uploadImage) functions
 - [x] res.send('function name')
 - [x] setup productRoutes file in routes
 - [x] import all controllers
@@ -303,7 +303,7 @@
 
 - [x] add orderController file in controllers
 - [x] export (getAllOrders, getSingleOrder, getCurrentUserOrders,
-  createOrder, updateOrder) functions
+      createOrder, updateOrder) functions
 - [x] res.send('function name')
 - [x] setup orderRoutes file in routes
 - [x] import all controllers
@@ -353,4 +353,3 @@
 - [x] xss-clean
 - [x] express-mongo-sanitize
 - [x] cors (cookies!!!!)
-

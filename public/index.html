@@ -8489,8 +8489,10 @@
                                     </div>
                                     <div id=collapse-Auth-LoginUser class="panel-collapse collapse">
                                         <div class=panel-body>
-                                            <h5 class="label label-primary">Body</h5><span
-                                                class=resp-prettyprint>{}</span>
+                                            <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+                                                &#34;email&#34;: &#34;nastya@gmail.com&#34;,
+                                                &#34;password&#34;: &#34;secret&#34;
+                                                }</span>
                                             <div class=clearfix></div>
                                         </div>
                                     </div>
@@ -8510,8 +8512,11 @@
                                     </div>
                                     <div id=collapse-Auth-RegisterUser class="panel-collapse collapse">
                                         <div class=panel-body>
-                                            <h5 class="label label-primary">Body</h5><span
-                                                class=resp-prettyprint>{}</span>
+                                            <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+                                                &#34;email&#34;: &#34;nastya@gmail.com&#34;,
+                                                &#34;password&#34;: &#34;secret&#34;,
+                                                &#34;name&#34;: &#34;anastasiia&#34;
+                                                }</span>
                                             <div class=clearfix></div>
                                         </div>
                                     </div>
@@ -8555,7 +8560,7 @@
                                                     User</strong> &nbsp;|&nbsp;
                                                 <strong class="request-method border-info">GET</strong>
                                                 &nbsp;
-                                                https://e-commerce-api-m7c6.onrender.com/api/v1/users/
+                                                https://e-commerce-api-m7c6.onrender.com/api/v1/users/6a50cdd68e8c7bcdeda9d5e0
                                             </h4>
                                         </a></div>
                                     <div id=collapse-Users-GetSingleUser class="panel-collapse collapse">
@@ -8576,7 +8581,13 @@
                                         </a>
                                     </div>
                                     <div id=collapse-Users-UpdateUser class="panel-collapse collapse">
-                                        <div class=panel-body></div>
+                                        <div class=panel-body>
+                                            <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+                                                &#34;email&#34;: &#34;nastya@gmail.com&#34;,
+                                                &#34;name&#34;: &#34;newsecret&#34;
+                                                }</span>
+                                            <div class=clearfix></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-warning" id=jump-Users-UpdateUserPassword>
@@ -8593,7 +8604,13 @@
                                         </a>
                                     </div>
                                     <div id=collapse-Users-UpdateUserPassword class="panel-collapse collapse">
-                                        <div class=panel-body></div>
+                                        <div class=panel-body>
+                                            <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+                                                &#34;oldPassword&#34;: &#34;newsecret&#34;,
+                                                &#34;newPassword&#34;: &#34;secret&#34;
+                                                }</span>
+                                            <div class=clearfix></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-info" id=jump-Users-ShowCurrentUser>
@@ -8651,7 +8668,7 @@
                                                     Product</strong> &nbsp;|&nbsp;
                                                 <strong class="request-method border-info">GET</strong>
                                                 &nbsp;
-                                                https://e-commerce-api-m7c6.onrender.com/api/v1/products/id
+                                                https://e-commerce-api-m7c6.onrender.com/api/v1/products/6a56b9eff2d23513e2281f55
                                             </h4>
                                         </a></div>
                                     <div id=collapse-Products-GetSingleProduct class="panel-collapse collapse">
@@ -8672,7 +8689,22 @@
                                         </a>
                                     </div>
                                     <div id=collapse-Products-CreateProduct class="panel-collapse collapse">
-                                        <div class=panel-body></div>
+                                        <div class=panel-body>
+                                            <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+                                                &#34;name&#34;: &#34;albany sectional&#34;,
+                                                &#34;price&#34;: 109999,
+                                                &#34;colors&#34;: [&#34;#000&#34;, &#34;#ffb900&#34;],
+                                                &#34;company&#34;: &#34;liddy&#34;,
+                                                &#34;description&#34;: &#34;Cloud bread VHS hell of banjo bicycle rights
+                                                jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr
+                                                dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter
+                                                fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry
+                                                kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk
+                                                microdosing gochujang live-edge&#34;,
+                                                &#34;category&#34;: &#34;kitchen&#34;
+                                                }</span>
+                                            <div class=clearfix></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-warning" id=jump-Products-UpdateProduct>
@@ -8684,12 +8716,17 @@
                                                     Product</strong> &nbsp;|&nbsp;
                                                 <strong class="request-method border-warning">PATCH</strong>
                                                 &nbsp;
-                                                https://e-commerce-api-m7c6.onrender.com/api/v1/products/id
+                                                https://e-commerce-api-m7c6.onrender.com/api/v1/products/6a56b9eff2d23513e2281f55
                                             </h4>
                                         </a>
                                     </div>
                                     <div id=collapse-Products-UpdateProduct class="panel-collapse collapse">
-                                        <div class=panel-body></div>
+                                        <div class=panel-body>
+                                            <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+                                                &#34;price&#34;: 29999
+                                                }</span>
+                                            <div class=clearfix></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-danger" id=jump-Products-DeleteProduct>
@@ -8701,7 +8738,7 @@
                                                     Product</strong> &nbsp;|&nbsp;
                                                 <strong class="request-method border-danger">DELETE</strong>
                                                 &nbsp;
-                                                https://e-commerce-api-m7c6.onrender.com/api/v1/products/id
+                                                https://e-commerce-api-m7c6.onrender.com/api/v1/products/6a56b9eff2d23513e2281f55
                                             </h4>
                                         </a></div>
                                     <div id=collapse-Products-DeleteProduct class="panel-collapse collapse">
@@ -8748,6 +8785,7 @@
                                                     Reviews</strong> &nbsp;|&nbsp;
                                                 <strong class="request-method border-info">GET</strong>
                                                 &nbsp;
+                                                https://e-commerce-api-m7c6.onrender.com/api/v1/products/6a56b9eff2d23513e2281f55/reviews
                                             </h4>
                                         </a></div>
                                     <div id=collapse-Products-GetSingleProductReviews class="panel-collapse collapse">
@@ -8782,7 +8820,15 @@
                                         </a>
                                     </div>
                                     <div id=collapse-Reviews-CreateReview class="panel-collapse collapse">
-                                        <div class=panel-body></div>
+                                        <div class=panel-body>
+                                            <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+                                                &#34;rating&#34;: 5,
+                                                &#34;title&#34;: &#34;very good product&#34;,
+                                                &#34;comment&#34;: &#34;very good product review from nastya&#34;,
+                                                &#34;product&#34;: &#34;6a56b9eff2d23513e2281f55&#34;
+                                                }</span>
+                                            <div class=clearfix></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-info" id=jump-Reviews-GetSingleReview>
@@ -8794,7 +8840,7 @@
                                                     Review</strong> &nbsp;|&nbsp;
                                                 <strong class="request-method border-info">GET</strong>
                                                 &nbsp;
-                                                https://e-commerce-api-m7c6.onrender.com/api/v1/reviews/id
+                                                https://e-commerce-api-m7c6.onrender.com/api/v1/reviews/6a57fc4121310ad6127e23b2
                                             </h4>
                                         </a></div>
                                     <div id=collapse-Reviews-GetSingleReview class="panel-collapse collapse">
@@ -8826,12 +8872,20 @@
                                                     Review</strong> &nbsp;|&nbsp;
                                                 <strong class="request-method border-warning">PATCH</strong>
                                                 &nbsp;
-                                                https://e-commerce-api-m7c6.onrender.com/api/v1/reviews/id
+                                                https://e-commerce-api-m7c6.onrender.com/api/v1/reviews/6a57fc4121310ad6127e23b2
                                             </h4>
                                         </a>
                                     </div>
                                     <div id=collapse-Reviews-UpdateReview class="panel-collapse collapse">
-                                        <div class=panel-body></div>
+                                        <div class=panel-body>
+                                            <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+                                                &#34;rating&#34;: 1,
+                                                &#34;title&#34;: &#34;very bad product&#34;,
+                                                &#34;comment&#34;: &#34;very bad product review from nastya&#34;,
+                                                &#34;product&#34;: &#34;6a56b9eff2d23513e2281f55&#34;
+                                                }</span>
+                                            <div class=clearfix></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-danger" id=jump-Reviews-DeleteReview>
@@ -8843,7 +8897,7 @@
                                                     Review</strong> &nbsp;|&nbsp;
                                                 <strong class="request-method border-danger">DELETE</strong>
                                                 &nbsp;
-                                                https://e-commerce-api-m7c6.onrender.com/api/v1/reviews/id
+                                                https://e-commerce-api-m7c6.onrender.com/api/v1/reviews/6a57fc4121310ad6127e23b2
                                             </h4>
                                         </a></div>
                                     <div id=collapse-Reviews-DeleteReview class="panel-collapse collapse">
@@ -8878,7 +8932,23 @@
                                         </a>
                                     </div>
                                     <div id=collapse-Orders-CreateOrder class="panel-collapse collapse">
-                                        <div class=panel-body></div>
+                                        <div class=panel-body>
+                                            <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+                                                &#34;tax&#34;: 499,
+                                                &#34;shippingFee&#34;: 799,
+                                                &#34;items&#34;: [
+                                                {
+                                                &#34;name&#34;: &#34;bed&#34;,
+                                                &#34;price&#34;: 2699,
+                                                &#34;image&#34;:
+                                                &#34;https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160&#34;,
+                                                &#34;amount&#34;: 3,
+                                                &#34;product&#34;: &#34;6a56ba17f2d23513e2281f5b&#34;
+                                                }
+                                                ]
+                                                }</span>
+                                            <div class=clearfix></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-info" id=jump-Orders-GetSingleOrder>
@@ -8890,7 +8960,7 @@
                                                     Order</strong> &nbsp;|&nbsp;
                                                 <strong class="request-method border-info">GET</strong>
                                                 &nbsp;
-                                                https://e-commerce-api-m7c6.onrender.com/api/v1/orders/id
+                                                https://e-commerce-api-m7c6.onrender.com/api/v1/orders/6a573078b01d4a1e96afc08c
                                             </h4>
                                         </a></div>
                                     <div id=collapse-Orders-GetSingleOrder class="panel-collapse collapse">
@@ -8938,12 +9008,17 @@
                                                     Order</strong> &nbsp;|&nbsp;
                                                 <strong class="request-method border-warning">PATCH</strong>
                                                 &nbsp;
-                                                https://e-commerce-api-m7c6.onrender.com/api/v1/orders/id
+                                                https://e-commerce-api-m7c6.onrender.com/api/v1/orders/6a573078b01d4a1e96afc08c
                                             </h4>
                                         </a>
                                     </div>
                                     <div id=collapse-Orders-UpdateOrder class="panel-collapse collapse">
-                                        <div class=panel-body></div>
+                                        <div class=panel-body>
+                                            <h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+                                                &#34;paymentIntentID&#34;: &#34;random-ID&#34;
+                                                }</span>
+                                            <div class=clearfix></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -8959,7 +9034,7 @@
         <div class=container-fluid>
             <div class="span12 text-center"><span data-toggle=tooltip
                     title="If the application help you, please feel free to give a star to the project in github. Your star inspire me to work more on open-source projects like this!">Generated
-                    at 2026-07-15 11:09:33 by <a href=https://github.com/thedevsaddam/docgen target=_blank
+                    at 2026-07-16 00:41:01 by <a href=https://github.com/thedevsaddam/docgen target=_blank
                         class=text-muted>docgen</a></span></div>
         </div>
     </footer>
