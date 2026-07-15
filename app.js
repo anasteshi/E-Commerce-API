@@ -44,7 +44,7 @@ app.use(cors())
 app.use(xss())
 app.use(mongoSanitize())
 
-app.use(morgan("tiny")) // in order to see the request and route info
+// app.use(morgan("tiny")) // in order to see the request and route info
 app.use(express.json()) // in order to access data in req.body
 // app.use(cookieParser()) // in order to access cookies in code
 app.use(cookieParser(process.env.JWT_SECRET)) // to sign our cookies
@@ -52,12 +52,6 @@ app.use(express.static("./public"))
 app.use(fileUpload())
 
 // routes
-app.get("/api/v1", async (req, res) => {
-    // console.log(req.cookies)
-    console.log(req.signedCookies) // after signing cookies are accessible from here
-    res.send("E-commerce API")
-})
-
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/products", productRouter)
