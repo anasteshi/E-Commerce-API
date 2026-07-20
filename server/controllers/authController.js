@@ -49,9 +49,13 @@ const login = async (req, res) => {
         throw new CustomError.UnauthenticatedError("Invalid credentials")
     }
 
-    const isMatch = await user.comparePassword(password)
-    if (!isMatch) {
+    const isPasswordCorrect = await user.comparePassword(password)
+    if (!isPasswordCorrect) {
         throw new CustomError.UnauthenticatedError("Invalid credentials")
+    }
+
+    if (!user.isVerified) {
+        throw new CustomError.UnauthenticatedError("Please verify your email")
     }
 
     const tokenUser = createTokenUser(user)
