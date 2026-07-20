@@ -65,6 +65,25 @@ const login = async (req, res) => {
     res.status(StatusCodes.OK).json({ user })
 }
 
+const verifyEmail = async (req, res) => {
+    const { email, verificationToken } = req.body
+    const user = await User.findOne({ email })
+    if (!user) {
+        throw new CustomError.UnauthenticatedError("Invalid credentials")
+    }
+    if (verificationToken !== user.verificationToken) {
+        throw new CustomError.UnauthenticatedError("Invalid credentials")
+    }
+
+    user.isVerified = true
+    user.verifiedAt = Date.now()
+    user.verificationToken = ""
+    user.save()
+    res.status(StatusCodes.OK).json({
+        msg: "Your email was successfully verified",
+    })
+}
+
 const logout = async (req, res) => {
     res.cookie("token", "logout", {
         httpOnly: true,
@@ -73,4 +92,4 @@ const logout = async (req, res) => {
     res.status(StatusCodes.OK).json({ msg: "User logged out" })
 }
 
-module.exports = { register, login, logout }
+module.exports = { register, login, verifyEmail, logout }
