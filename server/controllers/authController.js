@@ -69,10 +69,10 @@ const verifyEmail = async (req, res) => {
     const { email, verificationToken } = req.body
     const user = await User.findOne({ email })
     if (!user) {
-        throw new CustomError.UnauthenticatedError("Invalid credentials")
+        throw new CustomError.UnauthenticatedError("Verification failed")
     }
     if (verificationToken !== user.verificationToken) {
-        throw new CustomError.UnauthenticatedError("Invalid credentials")
+        throw new CustomError.UnauthenticatedError("Verification failed")
     }
 
     user.isVerified = true
@@ -80,7 +80,7 @@ const verifyEmail = async (req, res) => {
     user.verificationToken = ""
     user.save()
     res.status(StatusCodes.OK).json({
-        msg: "Your email was successfully verified",
+        msg: "Email verified",
     })
 }
 
