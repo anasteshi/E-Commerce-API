@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer")
 const nodemailerConfig = require("./nodemailerConfig")
 
 const sendEmail = async ({ to, subject, html }) => {
-    const transporter = nodemailer.createTransport(nodemailerConfig)
+    const transporter = nodemailerConfig
     try {
         await transporter.sendMail({
             from: '"Anastasiia" <nastya@gmail.com>', // sender address
