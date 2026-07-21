@@ -11,7 +11,7 @@ const verifyJWT = (token) => {
 }
 
 const attachCookiesToResponse = ({ res, user, refreshToken }) => {
-    const accessTokenJWT = createJWT({ payload: user })
+    const accessTokenJWT = createJWT({ payload: { user } })
     const refreshTokenJWT = createJWT({ payload: { user, refreshToken } })
     const oneDay = 1000 * 60 * 60 * 24
 
