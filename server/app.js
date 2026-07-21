@@ -60,6 +60,10 @@ app.use("/api/v1/products", productRouter)
 app.use("/api/v1/reviews", reviewRouter)
 app.use("/api/v1/orders", authenticateUser, orderRouter)
 
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../front-end/build/index.html"))
+})
+
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 
