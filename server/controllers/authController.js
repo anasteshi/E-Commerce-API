@@ -95,10 +95,10 @@ const login = async (req, res) => {
     const ip = req.ip
     const userToken = { refreshToken, ip, userAgent, user: user._id }
 
-    const token = await Token.create(userToken) // temporary
+    await Token.create(userToken)
 
-    // attachCookiesToResponse({ res, user: tokenUser })
-    res.status(StatusCodes.OK).json({ user: tokenUser, token })
+    attachCookiesToResponse({ res, user: tokenUser, refreshToken })
+    res.status(StatusCodes.OK).json({ user: tokenUser })
 }
 
 const verifyEmail = async (req, res) => {
