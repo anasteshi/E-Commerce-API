@@ -1,5 +1,8 @@
 const nodemailer = require("nodemailer")
 
+const dns = require("dns")
+dns.setDefaultResultOrder("ipv4first")
+
 const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: Number(process.env.EMAIL_PORT),
@@ -8,14 +11,7 @@ const transporter = nodemailer.createTransport({
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
     },
-})
-
-transporter.verify((error, success) => {
-    if (error) {
-        console.error("Configuration error:", error)
-    } else {
-        console.log("Mail server is ready")
-    }
+    connectionTimeout: 10000,
 })
 
 module.exports = transporter
