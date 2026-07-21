@@ -1,5 +1,6 @@
 require("dotenv").config()
 require("express-async-errors") // to prevent adding try/catch blocks in each controller
+const path = require("path")
 
 // express
 const express = require("express")
@@ -48,7 +49,8 @@ app.use(mongoSanitize())
 app.use(express.json()) // in order to access data in req.body
 // app.use(cookieParser()) // in order to access cookies in code
 app.use(cookieParser(process.env.JWT_SECRET)) // to sign our cookies
-app.use(express.static("./public"))
+app.use(express.static(path.join(__dirname, "../front-end/build")))
+// app.use(express.static("./public"))
 app.use(fileUpload())
 
 // routes
