@@ -182,7 +182,30 @@ const forgotPassword = async (req, res) => {
 }
 
 const resetPassword = async (req, res) => {
-    res.send("Reset password")
+    const { token, email, password } = req.body
+
+    if (!token || !email || !password) {
+        throw new CustomError.BadRequestError("Provide all values")
+    }
+
+    const user = await User.findOne({ email })
+    if (user) {
+        const currentDate = new Date()
+
+        if (
+            user.passwordToken === token ||
+            user.passwordTokenExpDate >= currentDate
+        ) {
+            user.password = password
+            user.passwordToken = ""
+            user.passwordTokenExpDate = null
+            await user.save()
+        }
+    }
+
+    res.status(StatusCodes.OK).json({
+        msg: "Password was successfully reset",
+    })
 }
 
 module.exports = {
