@@ -4,7 +4,7 @@ const nodemailerConfig = require("./nodemailerConfig")
 const sendEmail = async ({ to, subject, html }) => {
     const transporter = nodemailerConfig
     return transporter.sendMail({
-        from: `"Anastasiia" ${process.env.EMAIL_USER}`, // sender address
+        from: `"Anastasiia" <${process.env.EMAIL_USER}>`, // sender address
         to,
         subject,
         html,
