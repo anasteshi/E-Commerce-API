@@ -1,3 +1,5 @@
+const dns = require("dns")
+dns.setDefaultResultOrder("ipv4first")
 require("dotenv").config()
 require("express-async-errors") // to prevent adding try/catch blocks in each controller
 const path = require("path")
